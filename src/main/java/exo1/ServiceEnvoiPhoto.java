@@ -9,4 +9,5 @@ public class ServiceEnvoiPhoto implements EnvoiService{
         //Logique partielle d'envoi d'image
         //A appeler dans envoi(Contact contact, String message)
     }
+
 }
