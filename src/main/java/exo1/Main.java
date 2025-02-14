@@ -3,7 +3,7 @@ package exo1;
 public class Main {
     public static void main(String[] args) {
         System.out.println("-> création d'un contact ");
-        Contact contact1 = new Contact("moula","123456789");
+        Contact contact1 = new Contact("moula","123456789" );
         System.out.println(contact1.getInfoContact());
 
         System.out.println("\n -> ajout d'un contact à l'annuaire ");
@@ -43,6 +43,22 @@ public class Main {
         annuaire.supprimeContact(contact1);
         System.out.println("\n -> Contacts actuels:");
         annuaire.afficheContacts();
+
+
+        System.out.println("\n -> Choisir le format de contact");
+        System.out.println("Format Texte: ");
+        contact1.setFormatStrategy(new FormatTexte());
+        System.out.println(contact1.getInfoContact());
+
+        // Changer en format JSON
+        contact1.setFormatStrategy(new FormatJson());
+        System.out.println("\nFormat JSON: ");
+        System.out.println(contact1.getInfoContact());
+
+        // Changer en format XML
+        contact1.setFormatStrategy(new FormatXML());
+        System.out.println("\nFormat XML: ");
+        System.out.println(contact1.getInfoContact());
     }
 }
 

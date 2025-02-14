@@ -6,10 +6,12 @@ public class Contact  {
     //private static List<Contact> lesContacts = new ArrayList<>();
     private String nom;
     private String numero;
+    private FormatStrategy format = new FormatTexte();//Qst 4: formt txt pr dft
 
     public Contact(String nom, String numero) {
         this.nom = nom;
         this.numero = numero;
+        //this.format = format;
         //L'ajout d'une instance de conatct à la liste ne se fait pas dans le constructeur (principe KISS)
         //lesContacts.add(this);
     }
@@ -22,10 +24,18 @@ public class Contact  {
         return numero;
     }
 
+    public void setFormatStrategy(FormatStrategy format) {this.format = format;} //Qst 4
+
     //modifiée pour respecter le principe DRY (il y'a toString déjà)
-    public String getInfoContact() {
+    /*public String getInfoContact() {
         return(toString());
+    }*/
+    //qst 4
+    public String getInfoContact() {
+        return format.formatter(this);
     }
+
+
 
     //Le contact n'a pas à gérer l'ajout et la suppression (single Responsibility)
     /*public void ajouteContact(Contact contact) {
@@ -43,10 +53,6 @@ public class Contact  {
         }
     }*/
     //Méthode sauvegardeEnBD() éliminé, elle est dans l'interface GestionBdd
-
-    public void envoiEmail(Contact contact, String message) {
-        // Logique pour envoyer un email
-    }
 
     @Override
     public String toString() {
